@@ -1,0 +1,154 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 1500px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column; /* tata letak vertikal */
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* tinggi viewport */
+  text-align: center;
+}
+
+/* --- NAVBAR --- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 97%;          /* penuh lebar layar */
+  height: 80px;         /* tinggi fleksibel */
+  background: #1E1E1E;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;       /* beri ruang dalam */
+  z-index: 100;
+
+  transition: all 0.4s ease;
+}
+
+/* --- HAMBURGER --- */
+.hamburger {
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.hamburger .line {
+  width: 30px;
+  height: 4px;
+  background: #fff;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active .line:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+  
+.hamburger.active .line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .line:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+
+.sideMenu {
+  position: fixed;          /* biar ngikut layar, bukan container */
+  top: 0;
+  left: -250px;             /* sembunyi dulu */
+  width: 250px;
+  height: 100vh;            /* full tinggi layar */
+  background: #333;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+  transition: left 0.3s ease;
+  z-index: 999;
+
+  transition: all 0.4s ease;
+}
+.sideMenu .welcome,
+.sideMenu .user {
+  font-size: 18px;
+  margin: 5px 0;            /* kasih jarak antar teks */
+  color: white;
+  transition: all 0.4s ease;
+}
+
+.sideMenu a {
+  color: white;
+  text-decoration: none;
+  padding: 15px;
+  font-size: 18px;
+  border-bottom: 1px solid #444;
+  transition: 0.3s;
+  transition: all 0.4s ease;
+}
+
+.sideMenu a:hover {
+  background: #444;
+  padding-left: 25px;
+}
+
+/* kalau aktif → geser masuk */
+.sideMenu.active {
+  left: 0;
+}
+
+
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .navbar {
+    height: 70px;
+    padding: 0 15px;
+  }
+
+  .hamburger .line {
+    width: 25px;
+    height: 3px;
+    margin: 4px 0
+  }
+    .hamburger.active .line:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.active .line:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+  .sideMenu{
+   width: 150px; 
+  }
+}
+
+@media (max-width: 768px) {
+  .sideMenu .welcome,
+  .sideMenu .user,
+  .sideMenu a {
+    font-size: 14px;   /* mengecil saat layar <= 768px */
+  }
+}
+
+@media (max-width: 480px) {
+  .sideMenu .welcome,
+  .sideMenu .user,
+  .sideMenu a {
+    font-size: 12px;   /* makin kecil di layar HP kecil */
+  }
+}
